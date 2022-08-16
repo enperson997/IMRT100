@@ -51,6 +51,23 @@ def turn_robot_random_angle():
     for i in range(iterations):
         motor_serial.send_command(TURNING_SPEED * direction, -TURNING_SPEED * direction)
         time.sleep(0.10)
+        
+def turn_robot_right
+
+    direction = 1
+    iterations = random.randint(10, 25)
+    
+    for i in range(iterations):
+        motor_serial.send_command(TURNING_SPEED * direction, -TURNING_SPEED * direction)
+        time.sleep(0.10)
+        
+def turn_robot_left
+    direction = -1
+    iterations = random.randint(10, 25)
+    
+    for i in range(iterations):
+        motor_serial.send_command(TURNING_SPEED * direction, -TURNING_SPEED * direction)
+        time.sleep(0.10)
 
 
 
@@ -115,11 +132,11 @@ while not motor_serial.shutdown_now :
         print("Obstacle!")
         stop_robot(0.5)
 
-        # Reverse for 0.5 second
-        drive_robot(BACKWARDS, 0.5)
+       # Reverse for 0.5 second
+        # drive_robot(BACKWARDS, 0.5)
 
         # Turn random angle
-        turn_robot_random_angle()
+        turn_robot_left()
         
 
     else:
