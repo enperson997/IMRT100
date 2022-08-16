@@ -51,8 +51,8 @@ def turn_robot_random_angle():
     for i in range(iterations):
         motor_serial.send_command(TURNING_SPEED * direction, -TURNING_SPEED * direction)
         time.sleep(0.10)
-        
-def turn_robot_right
+
+def turn_robot_right():
 
     direction = 1
     iterations = random.randint(10, 25)
@@ -61,7 +61,8 @@ def turn_robot_right
         motor_serial.send_command(TURNING_SPEED * direction, -TURNING_SPEED * direction)
         time.sleep(0.10)
         
-def turn_robot_left
+
+def turn_robot_left():
     direction = -1
     iterations = random.randint(10, 25)
     
