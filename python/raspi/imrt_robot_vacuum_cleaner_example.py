@@ -12,7 +12,6 @@ BACKWARDS = -1
 DRIVING_SPEED = 100
 TURNING_SPEED = 100
 STOP_DISTANCE = 25
-STOP_DISTANCE2 = 40
 
 def stop_robot(duration):
 
@@ -119,31 +118,23 @@ while not motor_serial.shutdown_now :
 
 
 
-    # Get and print readings from distance sensors
+     # Get and print readings from distance sensors
     dist_1 = motor_serial.get_dist_1()
     dist_2 = motor_serial.get_dist_2()
     dist_3 = motor_serial.get_dist_3()
     dist_4 = motor_serial.get_dist_4()
-    print("Dist 1:", dist_1, "   Dist 2:", dist_2)
-
-    # Check if there is an obstacle in the way
-    if dist_1 < STOP_DISTANCE or dist_2 < STOP_DISTANCE:
-        # There is an obstacle in front of the robot
-        # First let's stop the robot for 1 second
-        print("Obstacle!")
-        stop_robot(0.5)
-
-       # Reverse for 0.5 second
-        # drive_robot(BACKWARDS, 0.5)
-
-        # Turn random angle
-        turn_robot_left()
-        
-
-    else:
+    print("Dist 2:", dist_2, "   Dist 3:", dist_3 "   Dist 4:", dist_4)
+	
+	STOP_DISTANCE = 25
+		
+		
+	if dist_2 < STOP_DISTANCE or dist_3 < STOP_DISTANCE+10 or dist_4 < STOP_DISTANCE:
+		stop_robot(0.2)
+		turn_robot_left()
+	
+	else:
         # If there is nothing in front of the robot it continus driving forwards
         drive_robot(FORWARDS, 0.1)
-
 
         
                 
