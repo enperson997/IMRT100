@@ -128,7 +128,7 @@ while not motor_serial.shutdown_now :
 	STOP_DISTANCE = 25
 		
 		
-	if dist_2 < STOP_DISTANCE or dist_3 < STOP_DISTANCE+10 or dist_4 < STOP_DISTANCE:
+	if dist_2 < STOP_DISTANCE and dist_3 < STOP_DISTANCE+10 and dist_4 < STOP_DISTANCE:
 		stop_robot(0.2)
 		turn_robot_left()
 	
