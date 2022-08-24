@@ -118,24 +118,28 @@ while not motor_serial.shutdown_now :
 
 
 
-     # Get and print readings from distance sensors
     dist_1 = motor_serial.get_dist_1()
     dist_2 = motor_serial.get_dist_2()
     dist_3 = motor_serial.get_dist_3()
     dist_4 = motor_serial.get_dist_4()
-    print("Dist 2:", dist_2, "   Dist 3:", dist_3 "   Dist 4:", dist_4)
-	
-	STOP_DISTANCE = 25
+    print("Dist 1:", dist_1, "   Dist 2:", dist_2, "   Dist 3:", dist_3, "   Dist 4:", dist_4)
 		
 		
-	if dist_2 < STOP_DISTANCE and dist_3 < STOP_DISTANCE+10 and dist_4 < STOP_DISTANCE:
+	if dist_3 > STOP_DISTANCE + 10 or dist_4 > STOP_DISTANCE: #right not blocked
+		stop_robot(0.2)
+		turn_robot_right()
+
+	elif dist_2 > STOP_DISTANCE and (dist_3 < STOP_DISTANCE + 10 or dist_4 < STOP_DISTANCE): #straight free & right blocked
+		drive_robot(FORWARDS, 0.1)
+		
+	elif dist_2 < STOP_DISTANCE and dist_3 < STOP_DISTANCE+10 and dist_4 < STOP_DISTANCE and dist_1 > STOP_DISTANCE: #straight and right blocked
 		stop_robot(0.2)
 		turn_robot_left()
-	
-	else:
-        # If there is nothing in front of the robot it continus driving forwards
-        drive_robot(FORWARDS, 0.1)
-
+		
+	elif dist_2 < STOP_DISTANCE and dist_3 < STOP_DISTANCE+10 and dist_4 < STOP_DISTANCE and dist_1 < STOP_DISTANCE:
+		stop_robot(0.2)
+		turn_robot_right()
+		turn_robot_right()
         
                 
 
